@@ -1,0 +1,150 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> hello! </title>
+    <link rel="stylesheet" href="./style.css"> 
+  </head>
+  <body>
+    <div class="main-page-wrapper">
+      <div> Welcome! </div>
+      <button class="primary-btn" onClick="toggleClass('modal-container', 'open')">Go to our form</button>
+    </div>
+    <div class="modal-background open" id="modal-container">
+      <div class="modal">
+        <span class="close" onClick="toggleClass('modal-container', 'open')">x</span>
+        <div class="modal-header">
+          <div class="category">Add product > Second-hand car > Automobiles</div>
+        </div>
+        <form name="myform" onsubmit="validateForm(); return true;">
+        <div class="input-label">
+          Brand
+          <div class="dropdown">
+            <div class="dropdown-selection" onClick="toggleClass('dropdown-menu-brand', 'hidden')">
+              <input readonly class="dropdown-input" id="dropdown-selection-brand" name="dropdownselectionbrand" placeholder="select" />
+            </div>
+            <div class="dropdown-menu hidden" id="dropdown-menu-brand">
+              <ul>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Audi'); displayCarLogo('Audi')">Audi</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Bentley'); displayCarLogo('Bentley')">Bentley</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Fiat'); displayCarLogo('Fiat')">Fiat</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Ford'); displayCarLogo('Ford')">Ford</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Hyundai'); displayCarLogo('Hyundai')">Hyundai</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Honda'); displayCarLogo('Honda')">Honda</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Kia'); displayCarLogo('Kia')">Kia</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Mazda'); displayCarLogo('Mazda')">Mazda</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Mercedes-Benz'); displayCarLogo('Mercedes-Benz')">Mercedes-Benz</li>
+                <li onClick="chooseOption('dropdown-menu-brand', 'dropdown-selection-brand', 'Mini'); displayCarLogo('Mini')">Mini</li>
+              </ul>
+            </div>
+          </div>
+          <span class="tooltip-img" data-tooltip="Help message">?</span> 
+          <div class="error hidden" id="dropdown-brand-error">This field is invalid</div>
+        </div>
+        <div class="input-label">
+          Manufacturing Year
+          <input id="input-year" name="input-year"/>
+          <span class="tooltip-img" data-tooltip="Help message">?</span>
+          <div class="error hidden" id="input-year-error">This field is invalid</div>
+        </div>
+        <div class="input-label">
+          Mileage
+          <input id="input-mileage" name="input-mileage"/>
+          <span class="tooltip-img" data-tooltip="Help message">?</span>           
+          <div class="error hidden" id="input-mileage-error">This field is invalid</div>
+        </div>      
+        <div class="input-label">
+          Fuel type
+          <input id="fuel-type" name="fuel-type"/>
+          <span class="tooltip-img" data-tooltip="Help message">?</span>           
+          <div class="error hidden" id="input-fuel-error">This field is invalid</div>
+        </div>
+        <div class="input-label">
+          Color
+          <div class="dropdown">
+            <div class="dropdown-selection" onClick="toggleClass('dropdown-menu-color', 'hidden')">
+              <input readonly class="dropdown-input" id="dropdown-selection-color" name="dropdown-selection-color" placeholder="select" />
+            </div>
+            <div class="dropdown-menu hidden" id="dropdown-menu-color">
+              <ul>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#C9FFE5')">Aero Blue</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#AF002A')">Alabama Crimson</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#FFBF00')">Amber</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#568203')">Avocado</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#318CE7')">Bleu De France</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#D1001C')">Blood Orange</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#4F86F7')">Blueberry</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#92A1CF')">Ceil</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#DE6FA1')">China Pink</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#483C32')">Dark Lava</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#563C5C')">English Violet</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#E25822')">Flame</li>                
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#AC1E44')">French Wine</li>
+                <li onClick="chooseColor('dropdown-menu-color', 'dropdown-selection-color', '#CC6666')">Fuzzy Wuzzy</li>
+              </ul>
+            </div>
+          </div>
+          <span class="tooltip-img" data-tooltip="Help message">?</span>           
+          <div class="error hidden" id="dropdown-color-error">This field is invalid</div>
+        </div>
+        <div class="separator"></div>
+        <div class="input-label">
+          Vehicle damaged
+          <div class="input-radio-wrapper">
+            <input type="radio" id="damaged-yes" name="damaged" value="yes" onClick="toggleClass('damaged-details', 'hidden', false)"/>
+            <label for="damaged-yes">Yes</label>
+            <input type="radio" id="damaged-no" name="damaged" value="no" onClick="toggleClass('damaged-details', 'hidden', true)"/>
+            <label for="damaged-no">No</label>
+          </div>
+          <span class="tooltip-img" data-tooltip="Help message">?</span>           
+          <div class="error hidden" id="input-damaged-error">This field is invalid</div>
+        </div>
+        <div class="input-label hidden" id="damaged-details">
+          Details
+          <span class="tooltip-img" data-tooltip="Help message">?</span>                     
+          <textarea placeholder="Please describe the damage" id="textarea-damage" name="textarea-damage"></textarea>
+          <div class="error hidden" id="textarea-damage-error">This field is invalid</div>
+        </div>
+        <div class="input-label">
+          Price
+          <input id="input-price" name="input-price" />
+          <span class="tooltip-img" data-tooltip="Help message">?</span>           
+          <div class="error hidden" id="input-price-error">This field is invalid</div>
+        </div>
+        <div class="input-label">
+          Currency
+          <div class="dropdown">
+            <div class="dropdown-selection" onClick="toggleClass('dropdown-menu-currency', 'hidden')">
+              <input readonly class="dropdown-input" id="dropdown-selection-currency" name="dropdown-selection-currency" placeholder="select"/>
+            </div>
+            <div class="dropdown-menu hidden" id="dropdown-menu-currency">
+              <ul>
+                <li onClick="chooseOption('dropdown-menu-currency', 'dropdown-selection-currency', 'Euro')">Euro</li>
+                <li onClick="chooseOption('dropdown-menu-currency', 'dropdown-selection-currency', 'Dollar')">Dollar</li>
+                <li onClick="chooseOption('dropdown-menu-currency', 'dropdown-selection-currency', 'Franc')">Franc</li>
+                <li onClick="chooseOption('dropdown-menu-currency', 'dropdown-selection-currency', 'Swiss Franc')">Swiss Franc</li>
+                <li onClick="chooseOption('dropdown-menu-currency', 'dropdown-selection-currency', 'Rupee')">Rupee</li>
+              </ul>
+            </div>
+          </div>
+          <span class="tooltip-img" data-tooltip="Help message">?</span>           
+          <div class="error hidden" id="dropdown-currency-error">This field is invalid</div>
+        </div>
+          <div class="input-label">
+            Description
+            <span class="tooltip-img" data-tooltip="Help message">?</span>          
+            <textarea id="textarea-description" name="textarea-description" placeholder="Please give a brief description" style="width: 75%"></textarea>
+            <div class="error hidden" id="textarea-description-error">This field is invalid</div>
+          </div>
+          <img id="car-logo-placeholder" class="car-logo-placeholder" />
+          <div class="buttons">
+            <div class="secondary-btn" onClick="toggleClass('modal-container', 'open', false)">Cancel</div>
+            <button type="submit" class="primary-btn">Save</button>
+          </div>
+        </form>
+    </div>
+    </div>
+    <script type="text/javascript" src="./utils.js"></script>  
+    <script type="text/javascript" src="./app.js"></script>
+  </body>
+</html>
